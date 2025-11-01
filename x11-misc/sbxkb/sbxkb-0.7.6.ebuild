@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+inherit flag-o-matic
 DESCRIPTION="X11 keyboard indicator and switcher"
 HOMEPAGE="https://sourceforge.net/projects/staybox/"
 SRC_URI="https://sourceforge.net/projects/staybox/files/${P}.tar.gz"
@@ -13,3 +14,9 @@ RDEPEND="=x11-libs/gtk+-2*
 		x11-libs/gdk-pixbuf
 		x11-libs/gdk-pixbuf-xlib"
 DEPEND="${RDEPEND}"
+
+src_configure() {
+	append-ldflags -lX11
+	default
+}
+
